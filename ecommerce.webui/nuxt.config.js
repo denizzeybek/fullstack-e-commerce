@@ -31,13 +31,22 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/fontawesome'
   ],
 
+  fontawesome: {
+    component:'fa',
+    icons:{
+      solid:true,
+      brands:true
+    }
+    
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
 }

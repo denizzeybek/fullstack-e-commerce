@@ -1,17 +1,17 @@
 <template>
     <div>
-        <navbar/>
-        <ShoppingCard/>
+        <NavComponent></NavComponent>
+        <ShoppingCard></ShoppingCard>
     </div>
 </template>
 
 <script>
-import navbar from '@/components/home/Navigation.vue';
+import NavComponent from '@/components/home/Navigation.vue';
 import ShoppingCard from '@/components/home/ShoppingCard.vue';
 export default {
     name:'HomeComponent',
     components:{
-        navbar,
+        NavComponent,
         ShoppingCard
     }
 }
