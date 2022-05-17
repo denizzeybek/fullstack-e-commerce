@@ -1,4 +1,5 @@
 import Vuex from 'vuex';
+import auth from './modules/auth.js'
 import basket from './modules/basket.js'
 
 const createStore = () => {
@@ -10,7 +11,8 @@ const createStore = () => {
             
         },
         modules: {
-            basket
+            auth,
+            basket,
         },
     })
 }

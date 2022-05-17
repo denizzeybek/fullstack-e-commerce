@@ -44,7 +44,6 @@
 
 <script>
 export default {
-    name: 'RegisterComponent',
     data(){
         return{
             emailText:'',
@@ -52,8 +51,9 @@ export default {
             userNameText:'',
             loginInfo:{
                 email:'',
+                userName:'',
                 password:'',
-                userName:''
+                repeatPassword:'',
             }
         }
     },
@@ -63,7 +63,9 @@ export default {
             this.loginInfo.email = this.emailText
             this.loginInfo.userName = this.userNameText
             this.loginInfo.password = this.passwordText
+            this.loginInfo.repeatPassword = this.passwordText
             console.log("loginInfo ", this.loginInfo)
+            this.$store.dispatch('registerAction', this.loginInfo)
         }
     }
 }

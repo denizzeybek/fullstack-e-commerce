@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="navigation-bar">
+        <!-- <div class="navigation-bar">
             <NavComponent></NavComponent>
-        </div>
+        </div> -->
         <div class="content flex">
             <div class="categorization">
                 <CategorizationBar></CategorizationBar>
@@ -11,23 +11,23 @@
                 <ProductList></ProductList>
             </div>
         </div>
-        <ShoppingCard></ShoppingCard>
+        <!-- <ShoppingCard></ShoppingCard> -->
     </div>
 </template>
 
 <script>
 import NavComponent from '@/components/home/Navigation.vue';
-import ShoppingCard from '@/components/home/ShoppingCard.vue';
+// import ShoppingCard from '@/components/home/ShoppingCard.vue';
 import CategorizationBar from '@/components/home/CategorizationBar.vue';
 import ProductList from '@/components/home/ProductList.vue';
 export default {
     name:'HomeComponent',
+    layout:'productLayout',
     components:{
         NavComponent,
-        ShoppingCard,
+        // ShoppingCard,
         CategorizationBar,
         ProductList
-
     }
 }
 </script>

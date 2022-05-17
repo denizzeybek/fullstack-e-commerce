@@ -129,7 +129,6 @@
 <script>
 import {mapGetters} from 'vuex';
 export default {
-    name: "component",
     data() {
         return {
             show: false,

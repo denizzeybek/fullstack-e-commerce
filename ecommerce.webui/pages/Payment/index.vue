@@ -1,15 +1,70 @@
 <template>
-    <div>
-        
+<div class="payment-general">
+    <div class="bg-gray-300 shipping-general">
+        <div class="py-12">
+            <div class="
+            max-w-md
+            mx-auto
+            bg-white
+            shadow-lg
+            rounded-lg
+            md:max-w-xl
+            mx-2
+          ">
+                <div class="md:flex">
+                    <div class="w-full p-4 px-5 py-5">
+                        <div class="flex flex-row pb-4">
+                            <img src="@/assets/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Logo" />
+                            <h2 class="text-3xl font-semibold">FlowBite</h2>
+                        </div>
+                        <span>Credit Cart Information</span>
+                        <div class="credit-cart-section">
+                            <CreditCart></CreditCart>
+                        </div>
+                        <div>
+                            <CartForm></CartForm>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <button @click="$router.push('/products')" type="button" class="h-12 w-36 text-blue-500 text-xs font-medium">
+                                Return to shopping
+                            </button>
+                            <button  @click="paymentSuccess" type="button" class="
+                                h-12
+                                w-48
+                                rounded
+                                font-medium
+                                text-xs
+                                bg-blue-500
+                                text-white">
+                                Pay
+                            </button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 </template>
 
 <script>
+import CreditCart from '@/components/payment/creditCart'
+import CartForm from '@/components/payment/cartForm'
 export default {
-
-}
+    components: {
+        CreditCart,
+        CartForm,
+    },
+    methods: {
+        paymentSuccess() {
+            alert("Congrats! You successfully completed a payment transaction.")
+        }
+    }
+};
 </script>
 
-<style>
-
+<style scoped>
+.payment-general {
+    height: 100vh;
+}
 </style>

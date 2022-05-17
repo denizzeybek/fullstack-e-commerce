@@ -148,7 +148,7 @@
                             <button @click="$router.push('/products')" type="button" class="h-12 w-36 text-blue-500 text-xs font-medium">
                                 Return to shopping
                             </button>
-                            <button type="button" class="
+                            <button @click="$router.push('/payment')" type="button" class="
                     h-12
                     w-48
                     rounded

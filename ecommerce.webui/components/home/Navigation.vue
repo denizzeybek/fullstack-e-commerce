@@ -58,12 +58,12 @@
                     <div style="position:absolute;right:50px;" v-if="isProfileDropdownOpen" id="dropdown1" class="z-10 bg-white divide-y divide-gray-100 rounded shadow w-34 dark:bg-gray-700">
                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <a @click="$router.push('/profile')" href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <fa icon="user"/>  Profile
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <a @click="$router.push('/')" href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <fa icon="arrow-right-from-bracket"/> Sign out
                                 </a>
                             </li> 
@@ -78,7 +78,6 @@
 
 <script>
 export default {
-    name: 'Navigation',
     data(){
         return{
             isProfileDropdownOpen:false

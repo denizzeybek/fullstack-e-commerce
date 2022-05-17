@@ -38,8 +38,8 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-    name: 'LoginComponent',
     data(){
         return{
             emailText:'',
@@ -56,6 +56,9 @@ export default {
             this.loginInfo.email = this.emailText
             this.loginInfo.password = this.passwordText
             console.log("loginInfo ", this.loginInfo)
+            axios.get('https://anapioficeandfire.com/api/houses/1')
+            .then(res =>  console.log("res", res))
+            .catch(e => console.log(e))
         }
     }
 }
