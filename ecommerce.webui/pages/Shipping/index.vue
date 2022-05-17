@@ -145,20 +145,8 @@
                   text-sm
                 " placeholder="Phone Number*" />
                         <div class="flex justify-between items-center pt-2">
-                            <button @click="$router.push('/products')" type="button" class="h-12 w-36 text-blue-500 text-xs font-medium">
-                                Return to shopping
-                            </button>
-                            <button @click="$router.push('/payment')" type="button" class="
-                    h-12
-                    w-48
-                    rounded
-                    font-medium
-                    text-xs
-                    bg-blue-500
-                    text-white
-                  ">
-                                Continue to Payment
-                            </button>
+                            <nuxt-link to="/products" class="h-12 w-36 text-blue-500 text-xs font-medium">Return to shopping</nuxt-link>
+                            <nuxt-link to="/payment" class="h-12 w-48 rounded font-medium text-xs bg-blue-500 text-white">Continue to Payment</nuxt-link>
                         </div>
                     </div>
                 </div>
@@ -169,7 +157,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  middleware: ["session-control", "auth"],
+};
 </script>
 
 <style scoped>

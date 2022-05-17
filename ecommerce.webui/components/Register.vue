@@ -51,20 +51,21 @@ export default {
             userNameText:'',
             loginInfo:{
                 email:'',
-                userName:'',
+                name:'',
                 password:'',
-                repeatPassword:'',
+                password_confirmation:'',
             }
         }
     },
     methods:{
         submitRegisterForm(e){
             e.preventDefault();
+
             this.loginInfo.email = this.emailText
-            this.loginInfo.userName = this.userNameText
+            this.loginInfo.name = this.userNameText
             this.loginInfo.password = this.passwordText
-            this.loginInfo.repeatPassword = this.passwordText
-            console.log("loginInfo ", this.loginInfo)
+            this.loginInfo.password_confirmation = this.passwordText
+            console.log("this.loginInfo ", this.loginInfo)
             this.$store.dispatch('registerAction', this.loginInfo)
         }
     }

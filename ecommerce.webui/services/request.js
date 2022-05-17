@@ -3,7 +3,7 @@ import api from './api'
 const request = async (url, method, params) => {
     try {
         const { data = null, error } = await api[method](url, params);
-
+        // console.log("requestjs data", data)
         if (!data) {
             if (error.type === '403') {
                 // open popup

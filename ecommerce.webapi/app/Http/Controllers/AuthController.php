@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function register(Request $request){
-
+        // $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+        // $out->writeln($request);
+        // echo($request);
         $fields = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
@@ -21,6 +23,7 @@ class AuthController extends Controller
             'email' => $fields['email'],
             'password' => bcrypt($fields['password']),
         ]);
+        // dump($user);
 
         $token = $user->createToken('myapptoken')->plainTextToken;
 

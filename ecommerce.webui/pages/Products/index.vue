@@ -22,6 +22,7 @@ import CategorizationBar from '@/components/home/CategorizationBar.vue';
 import ProductList from '@/components/home/ProductList.vue';
 export default {
     name:'HomeComponent',
+    middleware: ["session-control", "auth"],
     layout:'productLayout',
     components:{
         NavComponent,

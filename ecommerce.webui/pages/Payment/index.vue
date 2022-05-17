@@ -10,7 +10,7 @@
             rounded-lg
             md:max-w-xl
             mx-2
-          ">
+            ">
                 <div class="md:flex">
                     <div class="w-full p-4 px-5 py-5">
                         <div class="flex flex-row pb-4">
@@ -24,10 +24,9 @@
                         <div>
                             <CartForm></CartForm>
                         </div>
-                        <div class="flex justify-between items-center pt-2">
-                            <button @click="$router.push('/products')" type="button" class="h-12 w-36 text-blue-500 text-xs font-medium">
-                                Return to shopping
-                            </button>
+                        <div class="flex justify-between items-center pt-2"> 
+                            <nuxt-link to="/products" class="h-12 w-36 text-blue-500 text-xs font-medium">Return to shopping</nuxt-link>
+
                             <button  @click="paymentSuccess" type="button" class="
                                 h-12
                                 w-48
@@ -51,6 +50,7 @@
 import CreditCart from '@/components/payment/creditCart'
 import CartForm from '@/components/payment/cartForm'
 export default {
+    middleware: ["session-control", "auth"],
     components: {
         CreditCart,
         CartForm,

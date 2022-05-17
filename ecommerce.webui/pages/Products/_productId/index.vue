@@ -290,7 +290,8 @@
 
 <script>
 export default {
-    layout:'productLayout'
+    layout:'productLayout',
+    middleware: ["session-control", "auth"],
 }
 </script>
 

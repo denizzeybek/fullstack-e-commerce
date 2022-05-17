@@ -15,12 +15,14 @@ use App\Http\Controllers\AuthController;
 // Route::resource('products', ProductController::class); -> bütün api leri çalıştırır.
 
 // public routes
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-
-Route::get('/products', [ProductController::class, 'index']); // product controller'ın index methodunda return ettiğini getir
-Route::get('/products/{id}', [ProductController::class, 'show']);
-Route::get('/products/search/{name}', [ProductController::class, 'search']);
+Route::middleware(['cors'])->group(function () {
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+    
+    Route::get('/products', [ProductController::class, 'index']); // product controller'ın index methodunda return ettiğini getir
+    Route::get('/products/{id}', [ProductController::class, 'show']);
+    Route::get('/products/search/{name}', [ProductController::class, 'search']);
+});
 
 
 
@@ -35,3 +37,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+

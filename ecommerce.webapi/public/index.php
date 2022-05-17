@@ -4,7 +4,11 @@ use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
-header("Access-Control-Allow-Origin: http://localhost");
+$allowedOrigins = array(
+    'http://localhost:8000',
+    'http://localhost:8080'
+);
+// header("Access-Control-Allow-Origin: http://localhost");
 /*
 |--------------------------------------------------------------------------
 | Check If The Application Is Under Maintenance
