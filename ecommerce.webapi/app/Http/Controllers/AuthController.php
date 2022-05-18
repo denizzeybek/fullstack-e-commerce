@@ -16,12 +16,14 @@ class AuthController extends Controller
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
             'password' => 'required|string|confirmed',
+            'isAdmin' => 'boolean|integer',
         ]);
 
         $user = User::create([
             'name' => $fields['name'],
             'email' => $fields['email'],
             'password' => bcrypt($fields['password']),
+            'isAdmin' => $fields['isAdmin'],
         ]);
         // dump($user);
 
@@ -29,7 +31,7 @@ class AuthController extends Controller
 
         $response = [
             'user' => $user,
-            'token' => $token,
+            'token' => $token
         ];
 
         return response($response, 201);

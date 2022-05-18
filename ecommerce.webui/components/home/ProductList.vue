@@ -149,7 +149,7 @@
 
 <script>
 export default {
-    layout:'productLayout'
+    layout:'product'
 }
 </script>
 

@@ -7,7 +7,7 @@
 <script>
 import Profile from '@/components/profile'
 export default {
-    layout:'productLayout',
+    layout:'product',
     middleware: ["session-control", "auth"],
     components:{
         Profile

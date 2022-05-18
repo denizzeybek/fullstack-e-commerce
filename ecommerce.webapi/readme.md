@@ -10,6 +10,7 @@ php artisan make:model Product --migration
 
 ## migration yarattıktan sonra db yi güncellemek için
 php artisan migrate
+php artisan migrate:fresh -> önceden table mevcutsa bu komutu kullan
 
 ## controller yaratmak yaratmak
 php artisan make:controller ProductController --api

@@ -2,18 +2,25 @@ import request from '@/services/request'
 import Cookies from 'js-cookie'
 
 const state = {
-    isLoggedIn : false
+    isLoggedIn : false,
+    isAdmin : false
 }
 
 const getters = {
     isAuthenticated(state){
         return state.isLoggedIn
+    },
+    getIsAdmin(state){
+        return state.isAdmin
     }
 }
 
 const mutations = {
     setIsLoggedIn(state, data){
         state.isLoggedIn = data
+    },
+    setIsAdmin(state, data){
+        state.isAdmin = data
     }
 }
 
@@ -50,9 +57,14 @@ const actions = {
 
         if (data) {
             Cookies.set('bearerToken', data.token)
+            var user = data.user
+            if(user.isAdmin == 1){
+                boolAdmin = true
+            }
+            commit('setIsAdmin', boolAdmin)
             this.$router.push("/products")
-            // commit('setAddProjectAction', { ...response })
-            console.log(data, error)
+            this.$router.push("/products")
+            // console.log(data, error)
         } 
     },
     async loginAction({ commit }, inputData) {
@@ -62,10 +74,15 @@ const actions = {
 
         if (data) {
             Cookies.set('bearerToken', data.token)
-            console.log('data', data)
+            var boolAdmin = false
+            var user = data.user
+            if(user.isAdmin == 1){
+                boolAdmin = true
+            }
+            commit('setIsAdmin', boolAdmin)
             this.$router.push("/products")
             // commit('setAddProjectAction', { ...response })
-            console.log("res: ",data, error)
+            // console.log("res: ",data, error)
         }
         
     },

@@ -23,7 +23,7 @@ import ProductList from '@/components/home/ProductList.vue';
 export default {
     name:'HomeComponent',
     middleware: ["session-control", "auth"],
-    layout:'productLayout',
+    layout:'product',
     components:{
         NavComponent,
         // ShoppingCard,
