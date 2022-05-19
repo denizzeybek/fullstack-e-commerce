@@ -26,7 +26,7 @@
                     <div class="flex justify-center items-center ">
                         <div class="xl:w-66">
                             <label for="exampleSearch2"></label>
-                            <input type="search" class="
+                            <input v-on:keyup="onSearch" v-model="searchData" type="search" class="
                                 form-control
                                 block
                                 w-full
@@ -45,10 +45,11 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <a v-if="getIsAdmin" href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                <li v-show="isAdmin"> 
+                    <nuxt-link to="/addProduct" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                         <fa icon="plus" /> Create New Product
-                    </a>
+                    </nuxt-link>
+
                 </li>
                 <li>
                     <a @click="openCard" href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
@@ -86,12 +87,18 @@ import {mapGetters} from 'vuex'
 export default {
     data(){
         return{
-            isProfileDropdownOpen:false
+            isProfileDropdownOpen:false,
+            isAdmin: false,
+            searchData:''
         }
+    },
+    created(){
+        // console.log('getIsAdminCreated ', typeof(this.getIsAdmin))
+        this.isAdmin = (this.getIsAdmin === 'true')
     },
     methods: {
         openCard() {
-            console.log("xx")
+            // console.log("xx")
             this.$store.dispatch('isBasketOpenAction', true)
         },
         toggleProfileDropdown(){
@@ -99,6 +106,10 @@ export default {
         },
         signOut(){
             cookies.remove('bearerToken')
+            cookies.remove('isAdmin')
+        },
+        onSearch(){
+            this.$store.dispatch('searchAction', this.searchData)
         }
     },
     computed:{

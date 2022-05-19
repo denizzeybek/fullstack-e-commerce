@@ -30,7 +30,8 @@ Route::middleware(['cors'])->group(function () {
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    Route::post('/products', [ProductController::class, 'store']);
+    // Route::post('/products', [ProductController::class, 'store']);
+    Route::post('/addProduct', [ProductController::class, 'store']);
     Route::put('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 });

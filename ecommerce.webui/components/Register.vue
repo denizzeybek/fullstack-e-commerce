@@ -65,6 +65,7 @@ export default {
             this.loginInfo.name = this.userNameText
             this.loginInfo.password = this.passwordText
             this.loginInfo.password_confirmation = this.passwordText
+            this.loginInfo.isAdmin = 0
             console.log("this.loginInfo ", this.loginInfo)
             this.$store.dispatch('registerAction', this.loginInfo)
         }

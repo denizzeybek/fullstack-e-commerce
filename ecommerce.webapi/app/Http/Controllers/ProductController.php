@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 
+use App\Models\Product as ProductModel;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -27,12 +28,35 @@ class ProductController extends Controller
     // post request
     public function store(Request $request)
     {
+        // $request->validate([
+        //     'name' => 'required',
+        //     'category' => 'required', 
+        //     'price' => 'required',
+        //     'image' => 'binary',
+        // ]);
+        // return Product::create($request->all()); // post edilen datanın hepsini al
+
         $request->validate([
             'name' => 'required',
-            'slug' => 'required', 
-            'price' => 'required'
+            'description' => 'required',
+            'price' => 'required',
+            'image' => 'required',
+            'category' => 'required',
         ]);
-        return Product::create($request->all()); // post edilen datanın hepsini al
+
+        $product = new ProductModel([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'image' => $request->image,
+            'category' => $request->category,
+        ]);
+
+        $product->save();
+
+        return response()->json([
+            'data' => 'Product created!',
+        ]);
     }
 
     /**
