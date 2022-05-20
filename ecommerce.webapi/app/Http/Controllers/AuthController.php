@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -72,4 +73,36 @@ class AuthController extends Controller
             'message' => 'Logged out'
         ];
     }
+
+    public function index(){
+        $users = DB::table('users')->get();
+        return $users;
+    }
+
+    public function updateUser(Request $request,$id){
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $isAdmin = $request->input('isAdmin');
+
+
+        DB::update('update users set name = ?, email = ?, password = ?, isAdmin = ? where id = ?'
+        ,[$name, $email, $password, $isAdmin, $id]);
+
+        // $user = DB::select('select * from users where id = ?', [$id]);
+        $user = DB::select('select * from users where id = ?', [$id]);
+        return $user;
+    }
+
+    public function updateAdminStatus(Request $request,$id){ 
+        $isAdmin = $request->input('isAdmin');
+        DB::update('update users set isAdmin = ? where id = ?',[$isAdmin, $id]);
+        return response(201);
+    }
+
+    public function getSingleUser($id){
+        $user = DB::select('select * from users where id = ?', [$id]);
+        return $user;
+    }
+
 }

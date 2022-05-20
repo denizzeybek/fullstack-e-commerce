@@ -4,12 +4,16 @@ import request from '@/services/request'
 const state = {
     productList : [],
     productListGeneral : [],
-    categoryNames : []
+    categoryNames : [], 
+    productDetail : []
 }
 
 const getters = {
     getProductList(state){
         return state.productList
+    },
+    getProductDetail(state){
+        return state.productDetail
     }
 }
 
@@ -41,6 +45,10 @@ const mutations = {
         }
         // console.log('categoryNamesList ', categoryNamesList)
         state.categoryNames = categoryNamesList
+    },
+    setProductDetail(state, data){
+        state.productDetail = []
+        state.productDetail.push(data)
     }
 }
 
@@ -50,6 +58,22 @@ const actions = {
         if (data) {
             // console.log(data, error)
             commit('setProductList', data)
+        } 
+    },
+    async updateProductAction({commit}, input){
+        let id = input.id
+        const { data, error } = await request(`/updateProduct/`+id, 'put')
+        if (data) {
+            // console.log(data, error)
+            commit('setProductList', data)
+        } 
+    },
+    async deleteProductAction({commit}, id){ 
+        const { data, error } = await request(`/deleteProduct/`+id, 'delete')
+        if (data) {
+            // console.log(data, error)
+            commit('setProductList', data)
+            this.$router.push('/products')
         } 
     },
     filterProductListAction({commit}, type){
@@ -69,6 +93,13 @@ const actions = {
             commit('setSearchProductList')
         }
     },
+    async productDetailAction({commit}, id){
+        const { data, error } = await request(`/products/` + id, 'get')
+        if (data) {
+            console.log(data, error)
+            commit('setProductDetail', data)
+        }  
+    }
 }
 
 export default {

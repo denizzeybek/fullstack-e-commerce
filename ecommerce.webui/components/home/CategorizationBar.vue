@@ -20,6 +20,7 @@
 export default {
     data(){
         return{
+            //TODO: categorileri ürünler listesinden çekmen lazım 
             categoryList:['All Products', 'Best Sellers', 'Biographies', 'Memories', 'History', 'Fiction', 'Math', 'Science', 'Teen & Young', 'Sci-Fi']
         }
     },

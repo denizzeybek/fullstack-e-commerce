@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 
 const state = {
     isLoggedIn : false,
-    isAdmin : false
+    isAdmin : false, 
 }
 
 const getters = {
@@ -21,7 +21,7 @@ const mutations = {
     },
     setIsAdmin(state, data){
         state.isAdmin = data
-    }
+    }, 
 }
 
 const actions = { 
@@ -70,12 +70,15 @@ const actions = {
         if (data) {
             var boolAdmin = false
             var user = data.user
+            let id = user.id
+            console.log("id ", id)
             if(user.isAdmin == 1){
                 boolAdmin = true
             }
 
             Cookies.set('bearerToken', data.token)
             Cookies.set('isAdmin', boolAdmin)
+            Cookies.set('id', id)
             commit('setIsAdmin', boolAdmin)
             this.$router.push("/products")
             // console.log(data, error)
@@ -89,11 +92,13 @@ const actions = {
         if (data) {
             var boolAdmin = false
             var user = data.user
+            let id = user.id
             if(user.isAdmin == 1){
                 boolAdmin = true
             }
             Cookies.set('bearerToken', data.token)
             Cookies.set('isAdmin', boolAdmin)
+            Cookies.set('id', id)
             commit('setIsAdmin', boolAdmin)
             this.$router.push("/products")
             // commit('setAddProjectAction', { ...response })

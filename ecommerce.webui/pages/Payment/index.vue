@@ -13,12 +13,8 @@
             ">
                 <div class="md:flex">
                     <div class="w-full p-4 px-5 py-5">
-                        <div class="flex flex-row pb-4">
-                            <img src="@/assets/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Logo" />
-                            <h2 class="text-3xl font-semibold">FlowBite</h2>
-                        </div>
-                        <span>Credit Cart Information</span>
-                        <div class="credit-cart-section">
+                        <span class="pt-4">Credit Cart Information</span>
+                        <div class="credit-cart-section ">
                             <CreditCart></CreditCart>
                         </div>
                         <div>
@@ -51,6 +47,7 @@ import CreditCart from '@/components/payment/creditCart'
 import CartForm from '@/components/payment/cartForm'
 export default {
     middleware: ["session-control", "auth"],
+    layout:'product',
     components: {
         CreditCart,
         CartForm,
@@ -59,12 +56,15 @@ export default {
         paymentSuccess() {
             alert("Congrats! You successfully completed a payment transaction.")
         }
-    }
+    },
 };
 </script>
 
 <style scoped>
 .payment-general {
-    height: 100vh;
+    height: 93.8vh;
+}
+.shipping-general{
+    height:93.8vh;
 }
 </style>

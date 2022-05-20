@@ -85,7 +85,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->update($request->all());
-        return $product;
+        return Product::all();
     }
 
     /**
@@ -98,7 +98,9 @@ class ProductController extends Controller
      // delete
     public function destroy($id)
     {
-        return Product::destroy($id);
+        $product = Product::find($id);
+        $product->destroy($id);
+        return Product::all();
     }
 
     /**

@@ -12,12 +12,8 @@
             mx-2
           ">
                 <div class="md:flex">
-                    <div class="w-full p-4 px-5 py-5">
-                        <div class="flex flex-row pb-4">
-                            <img src="@/assets/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Logo" />
-                            <h2 class="text-3xl font-semibold">FlowBite</h2>
-                        </div>
-                        <span>Customer Information</span>
+                    <div class="w-full p-4 px-5 py-5"> 
+                        <span class="mt-4">Customer Information</span>
                         <div class="relative pb-5">
                             <input type="text" name="mail" class="
                     border
@@ -145,8 +141,12 @@
                   text-sm
                 " placeholder="Phone Number*" />
                         <div class="flex justify-between items-center pt-2">
-                            <nuxt-link to="/products" class="h-12 w-36 text-blue-500 text-xs font-medium">Return to shopping</nuxt-link>
-                            <nuxt-link to="/payment" class="h-12 w-48 rounded font-medium text-xs bg-blue-500 text-white">Continue to Payment</nuxt-link>
+                            <nuxt-link to="/products" class="h-12 w-36 flex justify-center items-center text-blue-500 text-xs font-medium">
+                              <span>Return to shopping</span>
+                            </nuxt-link>
+                            <nuxt-link to="/payment" class="h-12 w-48 flex justify-center items-center rounded font-medium text-xs bg-blue-500 text-white">
+                              <span> Continue to Payment</span>
+                            </nuxt-link>
                         </div>
                     </div>
                 </div>
@@ -159,11 +159,12 @@
 <script>
 export default {
   middleware: ["session-control", "auth"],
+  layout:'product',
 };
 </script>
 
 <style scoped>
 .shipping-general {
-    height: 100vh;
+    height: 93.8vh;
 }
 </style>

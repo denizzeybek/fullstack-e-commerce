@@ -27,7 +27,7 @@
                             <div class="flex justify-center flex-col">
                                 <p class="flex justify-center lg:text-2xl text-3xl font-black leading-10 text-gray-800 pt-3">{{product.category}} </p>
                                 <div class="md:w-4/12 2xl:w-1/4 w-full">
-                                    <img :src="JSON.parse(product.image)" alt="Black Leather Bag" class="h-full min-w-max object-center object-cover md:block hidden" />
+                                    <img :src="JSON.parse(product.image)" alt="Black Leather Bag" class="border border-1 rounded-lg border-gray-500 h-full min-w-max object-center object-cover md:block hidden" />
                                 </div>
                             </div>
 
@@ -83,7 +83,7 @@
                                     <p class="text-2xl leading-normal text-gray-800">Total</p>
                                     <p class="text-2xl font-bold leading-normal text-right text-gray-800">${{getSummaryTotalPrice}}</p>
                                 </div>
-                                <button onclick="checkoutHandler1(true)" class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">Checkout</button>
+                                <button @click="onCheckOut" class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -128,7 +128,13 @@ export default {
         changeQuantity(id, type){
             let data = {id, type}
             this.$store.dispatch('changeProductQuantityAction', data)
-        }
+        },
+        onCheckOut(){
+            // forma yönlendir
+            // db kayıt işlemini yap
+            this.$store.dispatch('isBasketOpenAction', false)
+            this.$router.push("/shipping")
+        },
     }, 
     computed:{
         ...mapGetters([

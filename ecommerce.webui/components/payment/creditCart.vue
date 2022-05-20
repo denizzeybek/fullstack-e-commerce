@@ -6,7 +6,7 @@
 
                 <div class="flex justify-between items-center text-white">
 
-                    <span class="text-3xl font-bold">12,290 <small class="text-sm font-light">USD</small></span>
+                    <span class="text-3xl font-bold">{{getSummaryTotalPrice}} <small class="text-sm font-light">USD</small></span>
                     <i class="fa fa-chevron-circle-up fa-2x text-gray-300"></i>
 
                 </div>
@@ -35,10 +35,7 @@
                     </div>
 
                     <div class="flex flex-row">
-                        <span class="text-white text-lg mr-1 font-bold">4</span>
-                        <span class="text-white text-lg mr-1 font-bold">8</span>
-                        <span class="text-white text-lg mr-1 font-bold">9</span>
-                        <span class="text-white text-lg mr-1 font-bold">0</span>
+                        <span class="text-white text-lg mr-1 font-bold">{{getCardNumber}} </span> 
                     </div>
 
                 </div>
@@ -47,13 +44,13 @@
 
                     <div class="flex flex-col">
                         <span class="font-bold text-gray-300 text-sm">Name</span>
-                        <span class="font-bold">Oscar Hosam</span>
+                        <span class="font-bold">{{getCardName}} </span>
 
                     </div>
 
                     <div class="flex flex-col">
                         <span class="font-bold text-gray-300 text-sm">Expires</span>
-                        <span class="font-bold">01/21</span>
+                        <span class="font-bold">{{getExpireDate}} </span>
 
                     </div>
 
@@ -66,8 +63,17 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
-
+    computed:{
+        ...mapGetters([
+            'getCardName',
+            'getCardNumber',
+            'getExpireDate',
+            'getCvv',
+            'getSummaryTotalPrice'
+        ])
+    }
 }
 </script>
 
