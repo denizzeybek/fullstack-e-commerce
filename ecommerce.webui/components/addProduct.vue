@@ -145,7 +145,7 @@ export default {
             fd.append("description", this.description);
             fd.append("category", this.category);
             fd.append("price", this.price);
-            this.image = "https://www.ukrgate.com/eng/wp-content/uploads/2021/02/The-Ukrainian-Book-Institute-Purchases-380.9-Thousand-Books-for-Public-Libraries1.jpeg"
+            // this.image = "https://www.ukrgate.com/eng/wp-content/uploads/2021/02/The-Ukrainian-Book-Institute-Purchases-380.9-Thousand-Books-for-Public-Libraries1.jpeg"
             fd.append("image", this.image);
 
             axios.post('/addProduct', fd)

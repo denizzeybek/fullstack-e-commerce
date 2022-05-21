@@ -5,6 +5,7 @@ use App\Models\Product;
 
 use App\Models\Product as ProductModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -85,7 +86,8 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->update($request->all());
-        return Product::all();
+        // return Product::all(); 
+        return $product; 
     }
 
     /**
@@ -114,5 +116,10 @@ class ProductController extends Controller
     public function search($name)
     {
         return Product::where('name', 'like', '%' .$name. '%')->get();
+    }
+
+    public function getCategoryList(){
+        $categories = DB::select('select category from products');
+        return $categories;
     }
 }

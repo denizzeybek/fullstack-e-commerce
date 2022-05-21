@@ -21,6 +21,7 @@ Route::middleware(['cors'])->group(function () {
     
     Route::get('/products', [ProductController::class, 'index']); // product controller'ın index methodunda return ettiğini getir
     Route::get('/products/{id}', [ProductController::class, 'show']);
+    Route::get('/getCategoryList', [ProductController::class, 'getCategoryList']);
     Route::get('/products/search/{name}', [ProductController::class, 'search']);
     Route::get('/getUsers', [AuthController::class, 'index']);
     Route::get('/getSingleUser/{id}', [AuthController::class, 'getSingleUser']);

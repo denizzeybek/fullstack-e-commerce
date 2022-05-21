@@ -5,7 +5,8 @@ const state = {
     productList : [],
     productListGeneral : [],
     categoryNames : [], 
-    productDetail : []
+    productDetail : [],
+    categoryList : []
 }
 
 const getters = {
@@ -14,6 +15,9 @@ const getters = {
     },
     getProductDetail(state){
         return state.productDetail
+    },
+    getCategoryList(state){
+        return state.categoryList
     }
 }
 
@@ -21,7 +25,7 @@ const mutations = {
     setProductList(state, data){
         state.productList = data
         state.productListGeneral = data
-    },
+    }, 
     setSearchProductList(state, data){
         state.productList = data
         if(data == null){
@@ -49,6 +53,10 @@ const mutations = {
     setProductDetail(state, data){
         state.productDetail = []
         state.productDetail.push(data)
+    },
+    setCategoryList(state, data){
+        let result = data.map(a => a.category);
+        return state.categoryList = result
     }
 }
 
@@ -97,6 +105,26 @@ const actions = {
         const { data, error } = await request(`/products/` + id, 'get')
         if (data) {
             console.log(data, error)
+            commit('setProductDetail', data)
+        }  
+    },
+    async getCategoryListAction({commit}){
+        const { data, error } = await request(`/getCategoryList`, 'get')
+        if (data) {
+            console.log(" category: ",data, error)
+            commit('setCategoryList', data)
+        }  
+    },
+    async updateProductAction({commit}, input){
+        let id = input.id
+        let name = input.name
+        let description = input.description
+        let price = input.price
+        let category = input.category
+
+        const { data, error } = await request(`/updateProduct/` + id, 'put', {name, description, price, category})
+        if (data) {
+            console.log("data: ",data, error)
             commit('setProductDetail', data)
         }  
     }
