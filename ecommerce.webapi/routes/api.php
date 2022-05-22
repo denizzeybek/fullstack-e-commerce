@@ -27,6 +27,8 @@ Route::middleware(['cors'])->group(function () {
     Route::get('/getSingleUser/{id}', [AuthController::class, 'getSingleUser']);
     Route::post('/updateUser/{id}', [AuthController::class, 'updateUser']);
     Route::post('/updateAdminStatus/{id}', [AuthController::class, 'updateAdminStatus']);
+    Route::post('/addProduct', [ProductController::class, 'store']);
+
 });
 
 
@@ -36,7 +38,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // Route::post('/products', [ProductController::class, 'store']);
-    Route::post('/addProduct', [ProductController::class, 'store']);
+    // Route::post('/addProduct', [ProductController::class, 'store']);
     Route::put('/updateProduct/{id}', [ProductController::class, 'update']);
     Route::delete('/deleteProduct/{id}', [ProductController::class, 'destroy']);
 });

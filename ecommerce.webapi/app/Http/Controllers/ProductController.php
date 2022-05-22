@@ -28,15 +28,7 @@ class ProductController extends Controller
 
     // post request
     public function store(Request $request)
-    {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'category' => 'required', 
-        //     'price' => 'required',
-        //     'image' => 'binary',
-        // ]);
-        // return Product::create($request->all()); // post edilen datanın hepsini al
-
+    { 
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -58,6 +50,7 @@ class ProductController extends Controller
         return response()->json([
             'data' => 'Product created!',
         ]);
+        
     }
 
     /**

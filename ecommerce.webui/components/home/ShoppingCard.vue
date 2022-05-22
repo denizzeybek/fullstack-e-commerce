@@ -27,7 +27,8 @@
                             <div class="flex justify-center flex-col">
                                 <p class="flex justify-center lg:text-2xl text-3xl font-black leading-10 text-gray-800 pt-3">{{product.category}} </p>
                                 <div class="md:w-4/12 2xl:w-1/4 w-full">
-                                    <img :src="JSON.parse(product.image)" alt="Black Leather Bag" class="border border-1 rounded-lg border-gray-500 h-full min-w-max object-center object-cover md:block hidden" />
+                                    <!-- <img :src="JSON.parse(product.image)" alt="Black Leather Bag" class="border border-1 rounded-lg border-gray-500 h-full min-w-max object-center object-cover md:block hidden" /> -->
+                                    <img :src="product.image" alt="Black Leather Bag" class="border border-1 rounded-lg border-gray-500 h-full min-w-max object-center object-cover md:block hidden" />
                                 </div>
                             </div>
 

@@ -13,7 +13,8 @@
                     <div class="w-100 p-4 px-5 py-12 ">
                         <div v-for="product in getProductDetail" :key="product.id" class=" flex justify-center">
                             <div class="image-section">
-                                <img class="product-image border border-1 rounded-lg border-gray-500" :src="JSON.parse(product.image)"/>
+                                <!-- <img class="product-image border border-1 rounded-lg border-gray-500" :src="JSON.parse(product.image)"/> -->
+                                <img class="product-image border border-1 rounded-lg border-gray-500" :src="product.image"/>
                             </div>
                             <div class="content-section">
                                 <p id="title-text" class="text-4xl title-text">{{product.name}} </p>

@@ -4,7 +4,8 @@
         <div class="p-3 bg-white rounded shadow-md cursor-pointer">
             <div @click="$router.push('/products/'+ product.id)" class="">
                 <div class="relative w-full mb-3 h-62 lg:mb-0">
-                    <img :src="JSON.parse(product.image)" alt="Just a flower" class="object-fill w-full h-full rounded">
+                    <!-- <img :src="JSON.parse(product.image)" alt="Just a flower" class="object-fill w-full h-full rounded"> -->
+                    <img :src="product.image" alt="Just a flower" class="object-fill w-full h-full rounded">
                 </div>
                 <div class="flex-auto p-2 justify-evenly">
                     <div class="flex flex-wrap ">

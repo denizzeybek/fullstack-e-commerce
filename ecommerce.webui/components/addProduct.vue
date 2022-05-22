@@ -122,6 +122,34 @@
 
 <script>
 import axios from 'axios'
+
+const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+        };
+        fileReader.onerror = (error) => {
+            reject(error);
+        };
+    });
+};
+function U16to8(convertMe) {
+    var out = "";
+    for(var i = 0; i < convertMe.length; i++) {
+        var charCode = convertMe.charCodeAt(i);
+        out += String.fromCharCode(~~(charCode/256));
+        out += String.fromCharCode(charCode%256);
+        }
+    return out;
+}
+
+function getBase64(img, callback) {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => callback(reader.result));
+    reader.readAsDataURL(img);
+}
 export default {
     middleware: ["session-control", "auth", 'isAdmin'],
     data() {
@@ -131,35 +159,51 @@ export default {
             category: '',
             price: null,
             image: null,
+            base64img : ''
         }
     },
     methods: {
-        onFileSelected(event){
+        async onFileSelected(event){
             this.image = event.target.files[0]
+            const base64 = await convertBase64(this.image)
+            this.base64img = base64
+            console.log("this img ", this.base64img)
         },
         saveProduct(e) {
             e.preventDefault();
+            
+            // this.image = convertBase64(this.image)
+            // this.base64img = U16to8(this.image)
+            this.image = "https://prnt.sc/zO6rkIk5_0If"
 
             let fd = new FormData();
             fd.append("name", this.name);
             fd.append("description", this.description);
-            fd.append("category", this.category);
             fd.append("price", this.price);
             // this.image = "https://www.ukrgate.com/eng/wp-content/uploads/2021/02/The-Ukrainian-Book-Institute-Purchases-380.9-Thousand-Books-for-Public-Libraries1.jpeg"
+            // this.image = ""
             fd.append("image", this.image);
+            fd.append("category", this.category);
 
-            axios.post('/addProduct', fd)
-            .then(res => {
-                this.name= ''
-                this.description= ''
-                this.category= ''
-                this.price= null
-                document.getElementById('image-data').value = ''
-            })
-            .catch(e => console.log(e))
-            console.log("save")
-        }, 
-    }
+            // this.image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+            // getBase64(this.image, (image) => {
+            //     this.base64img = JSON.stringify(image);
+                
+            //     });
+
+            axios.post('http://localhost:8000/api/addProduct', fd)
+                .then(res => {
+                    // this.name= ''
+                    // this.description= ''
+                    // this.category= ''
+                    // this.price= null
+                    // document.getElementById('image-data').value = ''
+                    console.log("add res ", res.data)
+                })
+                .catch(e => console.log(e, "not saved"))
+            
+        },  
+    },
 };
 </script>
 

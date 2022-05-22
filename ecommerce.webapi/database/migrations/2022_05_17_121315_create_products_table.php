@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('description');
             $table->decimal('price', 5, 2);
-            $table->binary('image');
+            $table->string('image');
             $table->timestamps();
         });
 
@@ -27,7 +27,7 @@ return new class extends Migration
         DB::table('products')->insert(array(
             'name' => 'Best Sellers Title Example',
             'description' => 'Best Sellers Description Example',
-            'image' => json_encode('https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'),
+            'image' => 'https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
             'category' => 'Best Sellers',
             'price' => '24'
         ));
@@ -35,7 +35,7 @@ return new class extends Migration
         DB::table('products')->insert(array(
             'name' => 'Biographies Title Example',
             'description' => 'BeBiographies Description Example',
-            'image' => json_encode('https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'),
+            'image' => 'https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
             'category' => 'Biographies',
             'price' => '24'
         ));
@@ -43,7 +43,7 @@ return new class extends Migration
         DB::table('products')->insert(array(
             'name' => 'Memories Title Example',
             'description' => 'Memories Description Example',
-            'image' => json_encode('https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'),
+            'image' => 'https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
             'category' => 'Memories',
             'price' => '24'
         ));
@@ -51,7 +51,7 @@ return new class extends Migration
         DB::table('products')->insert(array(
             'name' => 'History Title Example',
             'description' => 'History Description Example',
-            'image' => json_encode('https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'),
+            'image' => 'https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
             'category' => 'History',
             'price' => '24'
         ));
@@ -59,7 +59,7 @@ return new class extends Migration
         DB::table('products')->insert(array(
             'name' => 'Fiction Title Example',
             'description' => 'Fiction Description Example',
-            'image' => json_encode('https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'),
+            'image' => 'https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
             'category' => 'Fiction',
             'price' => '24'
         ));
@@ -67,7 +67,7 @@ return new class extends Migration
         DB::table('products')->insert(array(
             'name' => 'Math Title Example',
             'description' => 'Math Description Example',
-            'image' => json_encode('https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'),
+            'image' => 'https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
             'category' => 'Math',
             'price' => '24'
         ));
@@ -75,7 +75,7 @@ return new class extends Migration
         DB::table('products')->insert(array(
             'name' => 'Science Title Example',
             'description' => 'Science Description Example',
-            'image' => json_encode('https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'),
+            'image' => 'https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
             'category' => 'Science',
             'price' => '24'
         ));
@@ -83,7 +83,7 @@ return new class extends Migration
         DB::table('products')->insert(array(
             'name' => 'Teen & Young Title Example',
             'description' => 'Teen & Young Description Example',
-            'image' => json_encode('https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'),
+            'image' => 'https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
             'category' => 'Teen & Young',
             'price' => '24'
         ));
@@ -91,7 +91,7 @@ return new class extends Migration
         DB::table('products')->insert(array(
             'name' => 'Sci-Fi Title Example',
             'description' => 'Sci-Fi Description Example',
-            'image' => json_encode('https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'),
+            'image' => 'https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
             'category' => 'Sci-Fi',
             'price' => '24'
         ));

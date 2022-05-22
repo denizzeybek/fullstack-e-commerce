@@ -4,6 +4,7 @@
 
         <nuxt-link tag="a" to="/products" class="flex items-center cursor-pointer">
             <img src="@/assets/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Logo">
+            <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" class="mr-3 h-6 sm:h-9" alt="Logo"> -->
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
                 Flowbite
             </span>

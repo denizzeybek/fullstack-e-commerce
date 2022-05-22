@@ -34,12 +34,17 @@ const mutations = {
     },
     setFilterList(state, type){
         state.productList = state.productListGeneral
-        if(type !== 'All Products'){
+
+        if(type != null){
             let productListArray = state.productList
             let newArray = productListArray.filter(product => product.category === type);
             // console.log("productListArray ", newArray)
             state.productList = newArray
         }   
+        else{
+            console.log("here")
+            state.productList = state.productListGeneral
+        }
     },
     setCategoryNames(state){
         let productListArray = state.productList
