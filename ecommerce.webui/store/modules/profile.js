@@ -3,7 +3,7 @@ import request from '@/services/request'
 const state = {
     name:'John Doe', 
     userInfo : {},
-    userList : []
+    userList : [], 
 }
 
 const getters = {
@@ -18,14 +18,12 @@ const getters = {
     }
 }
 
-const mutations = { 
-    setUserInfo(state, data){
-        state.userInfo = data[0]
-    },
-    setUserList(state, data){
-        state.userList = data
-    }
-
+const mutations = {
+    setMutateHandler(state, input) {
+        let response = input.response
+        let type = input.type 
+        state[type] = response;
+    },  
 }
 
 const actions = { 
@@ -33,7 +31,11 @@ const actions = {
         const { data, error } = await request(`/getSingleUser/` + id, 'get')
         if (data) {
             console.log(data, error)
-            commit('setUserInfo', data)
+            let input = { 
+                response : data[0],
+                type : "userInfo"
+            }
+            commit('setMutateHandler', input)
         } 
     },
     async updateProfileAction({commit}, input){
@@ -45,14 +47,22 @@ const actions = {
         const { data, error } = await request(`/updateUser/` + id, 'post', { name, email, password, isAdmin})
         if (data) {
             console.log(data, error)
-            commit('setUserInfo', data)
+            let input = { 
+                response : data[0],
+                type : "userInfo"
+            }
+            commit('setMutateHandler', input)
         } 
     },
     async getUserListAction({commit}){
         const { data, error } = await request(`/getUsers` , 'get')
         if (data) {
             console.log(data, error)
-            commit('setUserList', data)
+            let input = { 
+                response : data,
+                type : "userList"
+            }
+            commit('setMutateHandler', input)
         } 
     },
     async updateAdminStatusAction({commit}, input){
@@ -61,9 +71,8 @@ const actions = {
         const { data, error } = await request(`/updateAdminStatus/` + id, 'post', { isAdmin})
         if (data) {
             console.log(data, error)
-            // commit('setUserInfo', data)
         } 
-    }
+    }, 
 }
 
 export default {

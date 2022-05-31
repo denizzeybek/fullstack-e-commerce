@@ -150,6 +150,39 @@ function getBase64(img, callback) {
     reader.addEventListener("load", () => callback(reader.result));
     reader.readAsDataURL(img);
 }
+async function reduce_image_file_size(base64Str, MAX_WIDTH = 450, MAX_HEIGHT = 450) {
+    let resized_base64 = await new Promise((resolve) => {
+        let img = new Image()
+        img.src = base64Str
+        img.onload = () => {
+            let canvas = document.createElement('canvas')
+            let width = img.width
+            let height = img.height
+            if (width > height) {
+                height *= MAX_WIDTH / width
+                width = MAX_WIDTH
+                if (width > MAX_WIDTH) {
+                    height *= MAX_WIDTH / width
+                    width = MAX_WIDTH
+                }
+            }
+            else{
+                if (height > MAX_HEIGHT) {
+                    width *= MAX_HEIGHT / height
+                    height = MAX_HEIGHT
+                }
+            }
+            canvas.width = width
+            canvas.height = height
+            let ctx = canvas.getContext('2d')
+            ctx.drawImage(img, 0, 0, width, height)
+            resolve(canvas.toDataURL())
+        } 
+    });
+    return resized_base64;
+}
+
+
 export default {
     middleware: ["session-control", "auth", 'isAdmin'],
     data() {
@@ -159,7 +192,8 @@ export default {
             category: '',
             price: null,
             image: null,
-            base64img : ''
+            base64img : '',
+            compressedImg : ''
         }
     },
     methods: {
@@ -168,6 +202,10 @@ export default {
             const base64 = await convertBase64(this.image)
             this.base64img = base64
             console.log("this img ", this.base64img)
+            reduce_image_file_size(this.base64img).then(result => {
+                console.log("resultXXXX", result); // "normalReturn"
+            });
+            // console.log("this.compressedImg ", this.compressedImg)
         },
         saveProduct(e) {
             e.preventDefault();
