@@ -9,7 +9,8 @@ If you would like to buy a product, just click on add to basket button.
 Also you can filter products depending on their category name, or search a product by it's name.  
   
 
-
+### In Progress
+Refactoring State Management to reduce code duplications
 
 ### Built with  
 - NuxtJs  
